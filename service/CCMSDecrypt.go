@@ -8,7 +8,7 @@ import (
 	"github.com/pruknil/ads/logger"
 )
 
-type CCMSDecryptService struct {
+type DemoService struct {
 	baseService
 	service.IHttpBackend
 	logger.AppLog
@@ -16,27 +16,27 @@ type CCMSDecryptService struct {
 	beRequest  http.DecryptDataRequest
 	beResponse *http.DecryptDataResponse
 
-	serviceRequest  CCMSDecryptRequest
-	serviceResponse CCMSDecryptResponse
+	serviceRequest  DemoRequest
+	serviceResponse DemoResponse
 }
 
-type CCMSDecryptRequest struct {
+type DemoRequest struct {
 	DPKName string `json:"dPKName"`
 	EData   string `json:"eData"`
 }
 
-type CCMSDecryptResponse struct {
+type DemoResponse struct {
 	DPKName string `json:"dPKName"`
 	Data    string `json:"data"`
 }
 
-func (s *CCMSDecryptService) Parse() error {
+func (s *DemoService) Parse() error {
 	jsonString, err := json.Marshal(s.Request.Body)
 	if err != nil {
 		return err
 	}
 	s.Log.Trace.Debug(jsonString)
-	s.serviceRequest = CCMSDecryptRequest{}
+	s.serviceRequest = DemoRequest{}
 	err = json.Unmarshal(jsonString, &s.serviceRequest)
 	if err != nil {
 		return err
@@ -44,7 +44,7 @@ func (s *CCMSDecryptService) Parse() error {
 	return nil
 }
 
-func (s *CCMSDecryptService) InputMapping() error {
+func (s *DemoService) InputMapping() error {
 	s.beRequest.KBankRequestHeader.UserId = s.Request.Header.UserId
 	s.beRequest.KBankRequestHeader.RqDt = s.Request.Header.RqDt
 	s.beRequest.KBankRequestHeader.FuncNm = "DecryptData"
@@ -57,7 +57,7 @@ func (s *CCMSDecryptService) InputMapping() error {
 	return nil
 }
 
-func (s *CCMSDecryptService) OutputMapping() error {
+func (s *DemoService) OutputMapping() error {
 	//err := deepcopy.Copy(&s.serviceResponse, s.beResponse.DecryptDataBodyResponse)
 	//if err != nil {
 	//	return err
@@ -65,12 +65,12 @@ func (s *CCMSDecryptService) OutputMapping() error {
 	return nil
 }
 
-func (s *CCMSDecryptService) getResponse() ResMsg {
+func (s *DemoService) getResponse() ResMsg {
 	s.Response.Body = s.serviceResponse
 	return s.Response
 }
 
-func (s *CCMSDecryptService) Business() error {
-	s.WSConn.WriteMessage(1,[]byte("Hello"))
+func (s *DemoService) Business() error {
+	s.WSConn.WriteMessage(1, []byte("Hello"))
 	return nil
 }

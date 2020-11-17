@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"github.com/getlantern/deepcopy"
 	"github.com/google/uuid"
-	"github.com/sirupsen/logrus"
-	"github.com/pruknil/ads/logger"
 	"github.com/gorilla/websocket"
+	"github.com/pruknil/ads/logger"
+	"github.com/sirupsen/logrus"
 	"strings"
 	"time"
 )
@@ -176,32 +176,13 @@ func buildError(businessError error) Error {
 
 type HttpService struct {
 	baseService
-	CCMSDecryptService
-	//DecipherAesService
-	//EncipherAesService
-	//DemoService
-	//CCMSDecryptService
-	//CCMSEncryptService
-	//SFTP0001O01Service
-	//SFTP0002I01Service
+	DemoService
 }
 
 func (s *HttpService) collectService(serviceId string) IServiceTemplate {
 	switch serviceId {
-	//case "DecipherAes":
-	//	return &s.DecipherAesService
-	//case "EncipherAes":
-	//	return &s.EncipherAesService
-	//case "Demo":
-	//	return &s.DemoService
-	case "CCMSDecrypt":
-		return &s.CCMSDecryptService
-	//case "CCMSEncrypt":
-	//	return &s.CCMSEncryptService
-	//case "SFTP0001O01":
-	//	return &s.SFTP0001O01Service
-	//case "SFTP0002I01":
-	//	return &s.SFTP0002I01Service
+	case "Demo":
+		return &s.DemoService
 	}
 	return nil
 }

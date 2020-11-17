@@ -4,7 +4,6 @@ import (
 	http2 "github.com/pruknil/ads/backends/http"
 	"github.com/pruknil/ads/logger"
 	"github.com/pruknil/ads/router/http"
-	"github.com/pruknil/ads/router/sftp"
 	"github.com/pruknil/ads/service"
 )
 
@@ -16,7 +15,6 @@ type Config struct {
 }
 
 type Router struct {
-	SFTP sftp.Config
 	Http http.Config
 }
 

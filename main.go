@@ -7,7 +7,6 @@ import (
 	"github.com/pruknil/ads/logger"
 	"github.com/pruknil/ads/router"
 	"github.com/pruknil/ads/router/http"
-	"github.com/pruknil/ads/router/sftp"
 	"github.com/pruknil/ads/service"
 	"go.uber.org/dig"
 	"log"
@@ -120,16 +119,6 @@ func NewConfig() app.Config {
 				ReadTimeout:  ten,
 				WriteTimeout: ten,
 				IdleTimeout:  ten,
-			},
-			SFTP: sftp.Config{
-				Host:          os.Getenv("SFTP_HOST"),
-				Port:          os.Getenv("SFTP_PORT"),
-				UserId:        os.Getenv("SFTP_USERID"),
-				Password:      os.Getenv("SFTP_PASSWORD"),
-				PrivateKey:    os.Getenv("SFTP_KEY"),
-				ConnTimeout:   0,
-				ReadDeadline:  0,
-				WriteDeadline: 0,
 			},
 		},
 		Service: app.Service{
