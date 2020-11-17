@@ -1,0 +1,12 @@
+{
+  "KBankHeader": {
+    "funcNm": "SFTP0001O01",
+    "rqUID": "509_20181101_TestCase01S",
+    "rqDt": "2019-03-22T11:43:18.546+07:00",
+    "userId": "CCMS"
+  },
+  "Body": {
+    "input": "CCMSP.BDA772N6.ECA1DJRN.20200923.txt",
+    "output": "CCMS.txt"
+  }
+}
