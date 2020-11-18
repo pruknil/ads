@@ -2,6 +2,7 @@ package http
 
 import (
 	"context"
+	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
 	"github.com/pruknil/ads/logger"
@@ -41,7 +42,7 @@ func NewGin(cfg Config, service service.IHttpService, logg logger.AppLog) *Gin {
 
 func (g *Gin) initializeRoutes() {
 	hn, _ := os.Hostname()
-	//g.router.Use(static.Serve("/", static.LocalFile("views/static", true)))
+	g.router.Use(static.Serve("/", static.LocalFile("views/static", true)))
 	g.router.POST("/api", g.serviceLocator)
 
 	g.router.GET("/health", func(c *gin.Context) {
@@ -80,7 +81,7 @@ func (g *Gin) atmMachine(c *gin.Context) {
 			break
 		}
 		g.wsConn.WriteMessage(t, msg)
-		log.Println(msg)
+		log.Println(string(msg))
 	}
 }
 
