@@ -1,8 +1,3 @@
-/*
- * Copyright(c) 2019. Kasikorn Bank Public Company Limited.
- *  All rights reserved.
- */
-
 package http
 
 import (

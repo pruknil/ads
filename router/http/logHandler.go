@@ -1,17 +1,12 @@
-/*
- * Copyright(c) 2019. Kasikorn Bank Public Company Limited.
- *  All rights reserved.
- */
-
 package http
 
 import (
 	"bytes"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/pruknil/ads/logger"
 	"io"
 	"io/ioutil"
-	"github.com/pruknil/ads/logger"
 	"regexp"
 	"strings"
 )
@@ -42,7 +37,9 @@ func LogResponse(log *logger.AppLog) gin.HandlerFunc {
 		blw := &bodyLogWriter{body: bytes.NewBufferString(""), ResponseWriter: c.Writer}
 		c.Writer = blw
 		c.Next()
-		log.Router.WithField(logger.RSUID, c.Writer.Header().Get("X-Request-Id")).Error("[RES]\n", maskingValue(blw.body.String()))
+		if !strings.HasSuffix(c.Request.RequestURI, "jpg") {
+			log.Router.WithField(logger.RSUID, c.Writer.Header().Get("X-Request-Id")).Error("[RES]\n", maskingValue(blw.body.String()))
+		}
 	}
 }
 
