@@ -45,11 +45,11 @@ func (s *DemoService) Parse() error {
 }
 
 func (s *DemoService) InputMapping() error {
-	s.beRequest.KBankRequestHeader.UserId = s.Request.Header.UserId
-	s.beRequest.KBankRequestHeader.RqDt = s.Request.Header.RqDt
-	s.beRequest.KBankRequestHeader.FuncNm = "DecryptData"
-	s.beRequest.KBankRequestHeader.RqAppId = "772"
-	s.beRequest.KBankRequestHeader.RqUID = s.Request.Header.RqUID
+	s.beRequest.RequestHeader.UserId = s.Request.Header.UserId
+	s.beRequest.RequestHeader.RqDt = s.Request.Header.RqDt
+	s.beRequest.RequestHeader.FuncNm = "DecryptData"
+	s.beRequest.RequestHeader.RqAppId = "772"
+	s.beRequest.RequestHeader.RqUID = s.Request.Header.RqUID
 	err := deepcopy.Copy(&s.beRequest.DecryptDataBodyRequest, s.serviceRequest)
 	if err != nil {
 		return err

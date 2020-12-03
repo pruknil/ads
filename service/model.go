@@ -2,8 +2,8 @@ package service
 
 import "time"
 
-const ApplicationId = "772"
-const ApplicationABBR = "CCMS"
+const ApplicationId = "000"
+const ApplicationABBR = "ADS"
 
 type ReqHeader struct {
 	FuncNm       string `json:"funcNm"`
@@ -38,11 +38,11 @@ type Error struct {
 }
 
 type ReqMsg struct {
-	Header ReqHeader   `json:"KBankHeader"`
+	Header ReqHeader   `json:"Header"`
 	Body   interface{} `json:"Body"`
 }
 
 type ResMsg struct {
-	Header ResHeader   `json:"KBankHeader"`
+	Header ResHeader   `json:"Header"`
 	Body   interface{} `json:"Body,omitempty"`
 }

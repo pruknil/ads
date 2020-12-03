@@ -1,6 +1,6 @@
 package http
 
-type KBankRequestHeader struct {
+type RequestHeader struct {
 	FuncNm  string `json:"funcNm"`
 	RqUID   string `json:"rqUID"`
 	RqDt    string `json:"rqDt"`
@@ -8,7 +8,7 @@ type KBankRequestHeader struct {
 	UserId  string `json:"userId"`
 }
 
-type KBankResponseHeader struct {
+type ResponseHeader struct {
 	FuncNm     string `json:"funcNm"`
 	RqUID      string `json:"rqUID"`
 	RsDt       string `json:"rqDt"`
@@ -17,22 +17,22 @@ type KBankResponseHeader struct {
 }
 
 type DecryptDataRequest struct {
-	KBankRequestHeader     `json:"KBankHeader"`
+	RequestHeader          `json:"Header"`
 	DecryptDataBodyRequest `json:"Body"`
 }
 
 type DecryptDataResponse struct {
-	KBankResponseHeader     `json:"KBankHeader"`
+	ResponseHeader          `json:"Header"`
 	DecryptDataBodyResponse `json:"Body"`
 }
 
 type EncryptDataRequest struct {
-	KBankRequestHeader     `json:"KBankHeader"`
+	RequestHeader          `json:"Header"`
 	EncryptDataBodyRequest `json:"Body"`
 }
 
 type EncryptDataResponse struct {
-	KBankResponseHeader     `json:"KBankHeader"`
+	ResponseHeader          `json:"Header"`
 	EncryptDataBodyResponse `json:"Body"`
 }
 
@@ -57,12 +57,12 @@ type DecryptDataBodyResponse struct {
 }
 
 type SFTP0002I01Request struct {
-	KBankRequestHeader     `json:"KBankHeader"`
+	RequestHeader          `json:"Header"`
 	SFTP0002I01BodyRequest `json:"Body"`
 }
 
 type SFTP0002I01Response struct {
-	KBankResponseHeader     `json:"KBankHeader"`
+	ResponseHeader          `json:"Header"`
 	SFTP0002I01BodyResponse `json:"Body"`
 }
 
