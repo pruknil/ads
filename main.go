@@ -96,7 +96,7 @@ func NewHttpService(httpService httpsvc.IHttpBackend, cfg app.Config, log logger
 	return service.HttpService{
 		//CCMSDecryptService: service.CCMSDecryptService{IHttpBackend: httpService, AppLog: log},
 		//CCMSEncryptService: service.CCMSEncryptService{IHttpBackend: httpService, AppLog: log},
-		//DemoService:        service.DemoService{AppLog: log, CcmsFs: syn},
+		DemoService: service.DemoService{AppLog: log, IHttpBackend: httpService},
 		//SFTP0001O01Service: service.SFTP0001O01Service{AppLog: log, CcmsFs: syn},
 		//SFTP0002I01Service: service.SFTP0002I01Service{AppLog: log, CcmsFs: syn},
 	}

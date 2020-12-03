@@ -47,8 +47,6 @@ func (s *DemoService) Parse() error {
 func (s *DemoService) InputMapping() error {
 	s.beRequest.RequestHeader.UserId = s.Request.Header.UserId
 	s.beRequest.RequestHeader.RqDt = s.Request.Header.RqDt
-	s.beRequest.RequestHeader.FuncNm = "DecryptData"
-	s.beRequest.RequestHeader.RqAppId = "772"
 	s.beRequest.RequestHeader.RqUID = s.Request.Header.RqUID
 	err := deepcopy.Copy(&s.beRequest.DecryptDataBodyRequest, s.serviceRequest)
 	if err != nil {
@@ -71,6 +69,6 @@ func (s *DemoService) getResponse() ResMsg {
 }
 
 func (s *DemoService) Business() error {
-	s.WSConn.WriteMessage(1, []byte("Hello"))
+	s.WSConn.WriteMessage(1, []byte("2.jpg"))
 	return nil
 }
